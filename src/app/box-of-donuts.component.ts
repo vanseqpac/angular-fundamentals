@@ -10,9 +10,10 @@ import { Donut } from './models/donut.interface';
     </div>
     <div class="donuts">
       <!-- Add property binding for the showName property -->
-      <app-donut *ngFor="let donut of donuts" [donut]="donut"></app-donut>
+      <app-donut [showNameInput]="showName" *ngFor="let donut of donuts" [donut]="donut"></app-donut>
     </div>
     <!-- Add a button with a click event handler that will toggle the showName property -->
+    <button (click)="showName = !showName" class="btn btn-large">Toggler showName</button>
   `
 })
 export class BoxOfDonutsComponent {
@@ -41,6 +42,7 @@ export class BoxOfDonutsComponent {
   ];
 
   // add a showName property that is a boolean value
+  showName: boolean = true;
 
   @Input() size = 6;
 

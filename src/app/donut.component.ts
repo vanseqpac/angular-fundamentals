@@ -6,7 +6,7 @@ import { Donut } from './models/donut.interface';
   template: `
     <div class="name">
       <!-- Hide the name when the showName property is false -->
-      {{ donut.name }}
+      <span [hidden]="showNameInput">{{ donut.name }} </span>
       <span
         *ngIf="donut.icing"
         [hidden]="donut.fileName && donut.fileName.length > 0"
@@ -24,4 +24,5 @@ export class DonutComponent {
   @Input() donut: Donut;
 
   // add a showName input property that toggles the name
+  @Input() showNameInput: boolean;
 }
