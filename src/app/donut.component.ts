@@ -6,10 +6,11 @@ import { Donut } from './models/donut.interface';
   template: `
     <div class="name">
       <!-- Hide the icing label when a donut has a fileName -->
-      {{ donut.name }} <span *ngIf="donut.icing">(icing)</span>
+      {{ donut.name }} <span *ngIf="!donut.fileName && donut.icing">(icing)</span>
     </div>
     <!-- Add image displaying the donut.fileName when specified. -->
     <!-- Then, add the alt attribute to the image using the donut.name value. -->
+    <img [src]="donut.fileName" [alt]="donut.name"/>
   `
 })
 export class DonutComponent {
