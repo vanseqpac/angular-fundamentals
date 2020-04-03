@@ -11,10 +11,13 @@ import { Donut } from './models/donut.interface';
     <div class="donuts">
       <!-- Add click event handler to set the selectedDonut -->
       <!-- Add the 'selected' class to the app-donut component when it is the currently selected donut -->
+      <!-- using NgStyle => [ngClass]="{'selected': donut === selectedDonut}"-->
       <app-donut
         *ngFor="let donut of donuts"
         [donut]="donut"
         [showName]="showName"
+        (click)="selectedDonut = donut"
+        [class.selected]="donut === selectedDonut"
       ></app-donut>
     </div>
     <button (click)="showName = !showName"></button>
@@ -92,6 +95,7 @@ export class BoxOfDonutsComponent {
   @Input() size = 6;
 
   // add a selectedDonut property that is of type `Donut`
+  selectedDonut: Donut;
 
   showName = true;
 
