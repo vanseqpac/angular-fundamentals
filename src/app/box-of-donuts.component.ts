@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Donut } from './models/donut.interface';
 
 @Component({
@@ -19,6 +19,7 @@ import { Donut } from './models/donut.interface';
       <div class="donut" *ngFor="let donut of donuts">
         <app-donut [donut]="donut"></app-donut>
         <!-- add button that emits the remove event -->
+        <button (click)="remove.emit(donut)" class="btn btn-large">Remove</button>
       </div>
     </div>
   `,
@@ -68,6 +69,7 @@ export class BoxOfDonutsComponent {
   @Input() donuts: Donut[];
 
   // add custom remove event emitter that emits a Donut object
+  @Output() remove = new EventEmitter<Donut>();
 
   /** The size of the box. This is the maximum number of donuts it can hold. */
   @Input() size = 6;

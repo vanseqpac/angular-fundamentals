@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Donut } from './models/donut.interface';
 
 @Component({
@@ -11,6 +11,7 @@ import { Donut } from './models/donut.interface';
       <div class="donut" *ngFor="let donut of donuts">
         <app-donut [donut]="donut"></app-donut>
         <!-- add button that emits the select event -->
+        <button (click)="selected.emit(donut)" class="btn btn-large">Select</button>
       </div>
     </div>
   `,
@@ -87,4 +88,5 @@ export class DonutWallComponent {
   ];
 
   // add custom event emitter `select` that emits when a donut has been added
+  @Output() selected = new EventEmitter<Donut>();
 }
