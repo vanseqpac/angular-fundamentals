@@ -2,7 +2,9 @@ import {
   Component,
   EventEmitter,
   Input,
-  Output
+  Output,
+  OnChanges,
+  SimpleChanges
   } from '@angular/core';
 import { Donut } from './models/donut.interface';
 
@@ -68,7 +70,7 @@ import { Donut } from './models/donut.interface';
     `
   ]
 })
-export class BoxOfDonutsComponent {
+export class BoxOfDonutsComponent implements OnChanges {
   /** The donuts in the box. */
   @Input() donuts: Donut[];
 
@@ -79,6 +81,12 @@ export class BoxOfDonutsComponent {
   @Input() size = 6;
 
   // add ngOnChanges() lifecycle method and verify that the number of donuts in the box does not exceed the size
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.donuts && 
+        changes.donuts.currentValue && 
+        this.isFull())
+    console.log('Box is full');
+  }
 
   isFull(): boolean {
     return this.donuts && this.donuts.length === this.size;
