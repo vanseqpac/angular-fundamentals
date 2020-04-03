@@ -19,10 +19,24 @@ import { Donut } from './models/donut.interface';
       [src]="donut.fileName"
       [style.width.%]="donut.name.length"
     />
-  `
+  `,
   /**
    * Add styles property and copy styles from the root styles.css
    */
+  styles: [`
+    :host {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+    
+    :host .heading {
+      padding: 10px;
+    }
+  `]
 })
 export class DonutComponent {
   @Input() donut: Donut;

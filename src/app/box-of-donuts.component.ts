@@ -28,6 +28,25 @@ import { Donut } from './models/donut.interface';
       /**
        * Copy styles for app-box-of-donuts from the root styles.css file.
        */
+      :host {
+        width: 100%;
+        border: 4px solid #e91e63;
+      }
+      
+      :host .heading {
+        background-color: #f8bbd0;
+        padding: 10px;
+      }
+      
+      :host .donuts {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      
     `
   ]
 })
