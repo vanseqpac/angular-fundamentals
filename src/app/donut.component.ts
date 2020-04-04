@@ -5,8 +5,9 @@ import { Donut } from './models/donut.interface';
   selector: 'app-donut',
   template: `
     <div class="name">
-      {{ donut.name }}
+      {{ donut.name | titlecase}}
       <!-- add the donut price -->
+      {{ donut.price | number: '0.2' | currency: 'EUR' }}
     </div>
     <img
       *ngIf="donut.fileName && donut.fileName.length > 0"
